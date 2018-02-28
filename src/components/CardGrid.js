@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 
 // Semantic.ui React Components
 import {
+
        Icon,
        Card,
        Flag,
