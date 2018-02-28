@@ -1,28 +1,312 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Lobster|Raleway:200,300');
+
+/* Horizontal Rule */
+hr {
+  border: 0;
+  padding: 0;
+  margin: 0 auto;
+  width: 90%;
+  height: 1px;
+  position: relative;
+  opacity: 0.4;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #0c0b0b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #0c0b0b, #f0f0f0);
+}
+
+/* Generic text-align centered */
+.centered {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/*************** LoadingScreen STYLES ***************/
+
+/* LoadingScreen spinner Title */
+.ml1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  font-size: 1.9em;
+  color: #FFF;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+/* LoadingScreen spinner */
+.sk-folding-cube {
+  margin: 40px auto;
+  width: 65px;
+  height: 65px;
+  position: relative;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
 }
 
-.App-title {
-  font-size: 1.5em;
+.sk-folding-cube .sk-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
-.App-intro {
-  font-size: large;
+.sk-folding-cube .sk-cube:before {
+  border: 1.5px solid #262626;
+  border-bottom-left-radius: 7px;
+  border-top-right-radius: 7px;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+          animation: sk-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.sk-folding-cube .sk-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+
+.sk-folding-cube .sk-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+
+.sk-folding-cube .sk-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+
+.sk-folding-cube .sk-cube2:before {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+
+.sk-folding-cube .sk-cube3:before {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+
+.sk-folding-cube .sk-cube4:before {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+@-webkit-keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0;
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 1;
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+/*************** CardGrid STYLES ***************/
+
+/* CardGrid social media sharing icons */
+.cardSocialIcons {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CardGrid social media sharing icons */
+.cardSocialIcons i:hover {
+  color: #1cc8cf;
+}
+
+/* CardGrid images - set to scale to fill up avaliable space evenly so all images end up the same size and aspect ratio */
+.ui.card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Country flag */
+i.flag {
+  margin: 0;
+}
+
+/* CardGrid Header */
+.cardHeader {
+  margin: 0.3em 0;
+}
+
+/* CardGrid description */
+.cardDescription {
+  font-size: 1em;
+  margin-top: 0.3em;
+  margin-bottom: 1em;
+  color: rgba(0,0,0,.68);
+  text-align: center;
+  line-height: 1.6em;
+}
+
+.ui.card.cards {
+  border-radius: 0;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.ui.card>:first-child, .ui.cards>.card>:first-child {
+  border-radius: 0 !important;
+  border-top-right-radius: 20px !important;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.ui.cards a.card:hover, .ui.link.card:hover, .ui.link.cards .card:hover, a.ui.card:hover {
+  transform: none;
+}
+
+.ui.four.cards>.card {
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ui.four.cards>.card.label {
+  margin: 45px;
+}
+
+.ui.four.cards>.card:hover {
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 15px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*************** StatisticsBar STYLES ***************/
+
+/* Values & stats for StatisticsBar */
+.Stat {
+  margin: 0 !important;
+  padding: 0.3em 5vw !important;
+  border: 0 !important;
+  font-weight: bold !important;
+}
+
+.Stats {
+  background: #eee linear-gradient(135deg, #526ba8, #d9dfee) !important;
+  margin: 0 -10px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#root > div > div:nth-child(2) > div > div > div > a {
+  color: white !important;
+  transition: 0.3s ease-in-out;
+}
+
+#root > div > div:nth-child(2) > div > div > div > a:hover {
+  color: #555 !important;
+}
+
+/*************** Button cluster STYLES ***************/
+#button__worldwide {
+  margin-right: 0;
+}
+
+.ui.buttons {
+  margin: 0 5px;
+}
+
+.ui.animated.button .hidden.content {
+  margin-top: -10px;
+}
+
+.buttonMenu {
+  display: flex;
+  justify-content: center;
+}
+
+/*************** WorldMap STYLES ***************/
+
+/* WorldMap gradient background */
+.amcharts-bg {
+  fill: url(#map_background);
+}
+
+/* WorldMap hover poppup */
+.mapPoppup {
+  text-align: center;
+  padding: 2.5%;
+  background: white;
+  background-size: cover;
+  color: #000;
+  border-radius: 10px;
+}
+
+div#__AmCharts_React_1__ {
+  border-radius: 0;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#__AmCharts_React_1__ > div > div.amcharts-chart-div > a {
+  display: none !important;
+}
+
+div#__AmCharts_React_1__ h2 {
+  font-family: 'Lobster', sans-serif;
+  font-weight: lighter;
+  margin-bottom: -20px;
+}
+
+div#__AmCharts_React_1__ h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+/*************** Search bar STYLES ***************/
+
+.ui.search>.results .result {
+  padding: 0.5em 0.5em;
+}
+
+.ui.search>.results .result .image {
+  border-radius: 0;
+  border-bottom-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.ui.search>.results .result .image img {
+  height: auto;
+}
+
+.ui.search>.results {
+  width: 25em;
+}
+
+.ui.category.search>.results .category .result:hover, .ui.search>.results .result:hover {
+  background: hsla(0, 0%, 0%, 0.1);
 }
