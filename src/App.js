@@ -40,13 +40,14 @@ state = {
   value: '',
   results: [],
   loaded: null,
-  visible: null
+  visible: null,
+  hover: false
 }
 
 render() {
 
   // Destructuring props to be passed to components
-  const {siteData, isLoading, value, results, loaded, visible } = this.state
+  const {siteData, isLoading, value, results, loaded, visible, hover } = this.state
 
   return (
     <Container fluid >
@@ -87,7 +88,7 @@ render() {
           <Button href='https://www.facebook.com/q1design/' target='_blank' animated={'fade'}>
             <Button.Content visible>Facebook</Button.Content>
             <Button.Content hidden>
-              <Icon name='facebook square' size='large' />
+              <Icon name='facebook f' size='large' />
             </Button.Content>
           </Button>
         </Button.Group>
@@ -107,7 +108,7 @@ render() {
             <Button href='https://bitbucket.org/presentplatekain/dev-real-estate' target='_blank' animated={'fade'}>
               <Button.Content visible>Support</Button.Content>
               <Button.Content hidden>
-                <Icon name='git square' size='large' />
+                <Icon name='bitbucket' size='large' />
               </Button.Content>
             </Button>
           </Button.Group>
@@ -139,7 +140,12 @@ render() {
         <br />
       </Container>
   {/* Statistics cluster */}
-      {loaded && <StatisticsBar siteData={siteData} />}
+      {loaded &&
+        <StatisticsBar
+          siteData={siteData}
+          hover={hover}
+        />
+      }
     </Container>
     )
   }
@@ -158,7 +164,7 @@ render() {
         visible: true
       })
       console.log('This is our state:', this.state.siteData)
-      configureAnchors({keepLastAnchorHash: false})
+      configureAnchors({keepLastAnchorHash: false, scrollDuration: 1000})
     }).catch(function(error) {
       // Something went wrong
       console.warn(error);
@@ -220,6 +226,8 @@ render() {
   }
 
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
+  hoverHandler = () => this.setState({hover: true})
+  hoverOffHandler = () => this.setState({hover: false})
 
 }
 
